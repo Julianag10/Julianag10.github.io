@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICA - week 4</title>
+    <link rel="stylesheet" href="https://use.typekit.net/inb4gjm.css">
+    <style>
+        html {
+            font-family: "league-gothic", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .flex {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+        }
+
+        .color-box{
+            height : 75px;
+            width : 75px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        #box1 {
+            background-color:#7ACCAD;
+            color: black;
+        }
+
+        #box2 {
+            background-color: #FFE96D ;
+            color: black;
+        }
+
+        #box3 {
+            background-color: #DC0073;
+            color: black;
+        }
+
+        #box4 {
+            background-color: #008BF8;
+            color: black;
+        }
+
+        #box5 {
+            background-color: #FF5F33;
+            color: black;
+        }
+
+        p {
+            font-size: 16px;
+        }
+
+        .small-text {
+            font-size: 12px;
+        }
+
+        h3 {
+            font-size: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+        }
+
+        h1 {
+            font-size: 28px;
+        }
+
+        a:link {
+            color: #DC0073;
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: #008BF8;
+        }
+
+        a:hover {
+            color: #FF5F33;
+            /* text-decoration: underline; */
+        }
+    
+        a:focus {
+            outline: 3px solid #008BF8;
+            outline-offset: 2px;
+        }
+
+        button {
+            background-color: #DC0073;  
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.1s ease;
+        }
+
+        button:hover {
+            background-color: #7ACCAD;
+            color: white;
+        }
+
+        button:visited {
+            color: #008BF8;
+        }
+
+        button:focus {
+            outline: 3px solid #008BF8;
+            outline-offset: 2px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class = "flex">
+        <div class = "color-box" id="box1">
+             <div>
+                <div>#7ACCAD</div>
+                <small>Contrast: 11.07 : 1 </small>
+            </div>
+        </div>
+
+        <div class = "color-box" id="box2">
+            <div>
+                <div>#FFE96D</div>
+                <small>Contrast: 17.13 : 1 </small>
+            </div>
+        </div>
+
+        <div class = "color-box" id="box3">
+            <div>
+                <div>#DC0073</div>
+                <small>Contrast: 4.29 : 1 </small>
+            </div>
+        </div>
+
+        <div class = "color-box" id="box4">
+            <div>
+                <div>#008BF8</div>
+                <small>Contrast: 6.05 : 1</small>
+            </div>
+        </div>
+
+        <div class = "color-box" id="box5">
+            <div>
+                <div>#FF5F33</div>
+                <small>Contrast: 6.94 : 1</small>
+            </div>
+        </div>
+    </div>
+
+    <h1>This is my H1</h1>
+    <h2>This is my H2</h2>
+    <h3>This is my H3</h3>
+
+    <p>This is my paragraph. </p>
+    <p class="small-text" > This is my small text</p>
+
+    <p><a   href="##3">CLICK HERE! This is my link</a></p>
+
+    <form>
+        <label for="favoritecolor">Favorite Color</label><br>
+        <input type="text" id="favoritecolor" name="favorite color" placeholder="Enter your favorite color"><br><br>
+
+        <button type="submit"> Submit</button>
+    </form>
+
+</body>
+</html>
