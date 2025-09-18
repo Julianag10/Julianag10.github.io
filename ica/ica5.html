@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICA 5 - Interactive Card Component</title>
+
+    <style>
+        .card {
+            max-width: 400px;
+            margin: 2em auto;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 1em;
+            font-family: sans-serif;
+        }
+
+        .card-header {
+            display: flex;                      /* enable flexbox */
+            justify-content: space-between;     /* push items apart */
+            align-items: center;                /* align vertically */
+        }
+
+        .expand-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;   /* makes it a circle */
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            background-color: #DC0073;
+            color: white;
+        }
+
+        .expand-btn:hover {
+            background-color: #7ACCAD; /* hover effect */
+        }
+
+        .details.hidden {
+            display: none;
+        }
+
+        .details {
+            display: block; /* shown when toggled */
+        }
+    </style>
+
+</head>
+<body>
+    <!-- Given starter code -->
+     <div class="card">
+
+        <div class="card-header">
+            <h3>Community Garden Project</h3>
+            <button class="expand-btn" aria-label="Expand card">+</button>
+        </div>
+
+        <div class="card-content">
+            <p class="summary">Join neighbors in creating a shared growing space...</p>
+            <div class="details hidden">
+                <p>Meeting every Saturday at 10am. Tools provided. All skill levels welcome.</p>
+                <p>Contact: garden@community.org</p>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+
+        //toggle functionality
+
+        //finds the button
+        const expandBtn = document.querySelector('.expand-btn');
+        //finds the hidden section
+        const details = document.querySelector('.details');
+
+        //runs code when button is clicked
+        expandBtn.addEventListener('click', () => {
+
+            //toggle the "hidden" class
+            details.classList.toggle('hidden');
+
+            //update button text (+ to -) and ARIA lable when toggleing
+
+            //if hidden is there, 
+            if (details.classList.contains('hidden')) {
+                expandBtn.textContent = '+';
+                expandBtn.setAttribute('aria-label', 'Expand card');
+            } else {
+                expandBtn.textContent = '-';
+                expandBtn.setAttribute('aria-label', 'Collapse card');
+            }
+
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+
+   
