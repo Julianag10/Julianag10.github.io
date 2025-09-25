@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICA 6- Layout and Conversion & Interactive componets</title>
+    <style>
+        /* Current Flexbox CSS */
+        .gallery-container { 
+            display: grid; 
+            grid-template-areas: 
+                "header  header"
+                "nav     sidebar"
+                "main    sidebar"
+            ;
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: auto auto 1fr;
+        }
+
+        .gallery-grid { 
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem; 
+        }
+
+        .gallery-header{
+            grid-area: header;
+        }
+        .gallery-nav{
+            grid-area: nav;
+        }
+        .gallery-sidebar{
+            grid-area: sidebar;
+        }
+
+        .photo-card { 
+            border: 2px solid black;
+            background: lightblue;
+            flex: 1 1 300px;
+            height: 200px;
+            transition: opacity 0.3s ease, transform 0.3s ease
+        }
+
+        .featured {
+            /* flex: 1 1 100%;
+            height: 300px; */
+            background: lightblue;
+            grid-column: span 2;
+        }
+
+        /* smoooth transition */
+        .photo-card.is-hidden{
+
+        }
+
+    
+    </style>
+</head>
+<body>
+
+    <div class="gallery-container">
+        <header class="gallery-header">Photo Gallery</header>
+        <nav class="gallery-nav">
+            <button>All</button>
+            <button>Nature</button>
+            <button>Architecture</button>
+        </nav>
+        <main class="gallery-grid">
+            <div class="photo-card" data-category="nature" >Photo 1</div>
+            <div class="photo-card" data-category="nature">Photo 2</div>
+            <div class="photo-card" data-category="nature">Photo 3</div>
+            <div class="photo-card featured" data-category="architecture">Featured Photo</div>
+            <div class="photo-card" data-category="architecture">Photo 5</div>
+            <div class="photo-card" data-category="architecture">Photo 6</div>
+        </main>
+        <aside class="gallery-sidebar">Filter Options</aside>
+
+    </div>
+
+        <!-- <div id="grandparent">
+            <div id="parent">
+                <button id="child">Clickme!</button>
+            </div>
+        </div> -->
+
+    <script>
+        // document.getElementById('grandparent').addEventListener('clicked',  ()=>{
+        //     console.log('grandparent clicked');
+        // });
+        // document.getElementById('parent').addEventListener('clicked',  ()=>{
+        //     console.log('parent clicked');
+        // });
+        // document.getElementById('child').addEventListener('clicked',  ()=>{
+        //     console.log('child clicked');
+        // });
+
+
+
+        // Get all filter buttons and photo cards
+        const filterButtons = document.querySelectorAll('.gallery-nav button');
+        const photoCards = document.querySelectorAll('.photo-card');
+
+        // Add click event to each button
+        filterButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                const filterValue = event.target.textContent.toLowerCase();
+                filterPhotos(filterValue);
+            });
+        });
+
+        function filterPhotos(category) {
+            photoCards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>
