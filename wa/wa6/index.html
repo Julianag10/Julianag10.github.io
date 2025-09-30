@@ -1,70 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Vive Wellness - Home</title>
-  <style>
-    body { margin:0; font-family:sans-serif; }
-    .main-nav {
-      display:flex; justify-content:space-between;
-      padding:.75rem 1rem; background:#befd73; color:black;
-    }
-    .nav-menu { display:flex; gap:1rem; list-style:none; margin:0; padding:0; }
-    .nav-menu a { text-decoration:none; color:black; padding:.5rem; }
-    .nav-menu a:hover, .nav-menu a:focus { background:rgba(0,0,0,0.1); border-radius:4px; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 
-    /* Simple grid homepage */
-    .home-container {
-      display:grid;
-      grid-template-areas:
-        "hero hero"
-        "about programs"
-        "footer footer";
-      grid-template-columns: 2fr 1fr;
-      gap:1rem; padding:1rem;
-    }
-    .hero { grid-area:hero; background:#e0ffe0; padding:1rem; }
-    .about { grid-area:about; background:#ffe; padding:1rem; }
-    .programs { grid-area:programs; background:#eef; padding:1rem; }
-    .footer { grid-area:footer; background:#ccc; padding:1rem; text-align:center; }
-    @media(max-width:768px){
-      .home-container {
-        grid-template-areas:
-          "hero"
-          "about"
-          "programs"
-          "footer";
-        grid-template-columns:1fr;
-      }
-    }
-  </style>
+    <style>
+        .homepage-grid {
+            display: grid;
+            grid-template-areas: 
+                "header header"
+                "nav nav"
+                "hero hero"
+                "mission mission"
+                "programs donate"
+                "programs volunteer"
+                "partners partners"
+                "footer footer";
+            grid-template-columns: 2fr 1fr;
+            gap: 1rem;
+        }
+        
+        @media(max-width: 768px){
+            .homepage-grid {
+                display: grid;
+                grid-template-areas: 
+                    "header"
+                    "nav"
+                    "hero"
+                    "mission"
+                    "programs"
+                    "donate"
+                    "volunteer"
+                    "partners"
+                    "footer";
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .header { 
+            grid-area: header;
+        }
+
+        .nav {
+            grid-area: nav;
+            display: flex;
+            padding: .75rem 1rem; /*defult for smaller screens top/bottom .75rem, left/right 1rem */
+            background-color: #befd73;
+            color: black;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 1.5rem;   /* space between links */
+            list-style: none; /* removes bullets */
+            margin: 0;  /* remove browser defaults */
+            padding: 0;
+        }
+
+        .nav-menu a{
+            color: black;
+            text-decoration: none; /* remove underlines */
+            padding: 0.5rem 0.75rem;  /*click/tap target size */
+        }
+
+        .nav-menu a:hover{
+            background-color: rgba(0, 0, 0, 0.1); /* feedback on hover only */
+            border-radius: 4px;
+        }
+        
+        .nav-menu a:focus {
+            outline: 2px solid #333;   /* focus ring only for keyboard navigation */
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+
+        /* hambugerbutton */
+        .nav-toggle {
+            display:flex;
+            flex-direction : column;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            width: 44px;
+            height: 44px;
+            background:none;
+            padding: 0; /*Removes default padding inside the <button> */
+            cursor: pointer;
+            border: none; /*Removes the browser’s default button border (usually a gray outline). */
+        }
+
+        .nav-toggle span{
+        /*   <span> is an inline element (like text), so it has no height/width.
+            display: block; makes it act like a box so you can give it dimensions.*/
+            display: block;
+            height: 3px;
+            width: 30px;
+            background-color: black;
+            border-radius: 2px;
+        }
+
+
+        .nav-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(10px, 5px);
+        }
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0; /* hide middle line */
+        }
+        .nav-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(10px, -5px)
+        }
+
+        .nav-toggle:hover {
+            background-color: rgba(0, 0, 0, 0.1); /* feedback on hover only */
+            border-radius: 4px;
+        }
+
+        .nav-toggle:focus-visible {
+            outline: 2px solid #333;   /* focus ring only for keyboard navigation */
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+
+         /* hanmburger on for mobile , on largersceens hide it  */
+        @media (min-width: 768px) {
+            .nav-toggle {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none; /*dont want full menu showing */
+                position: absolute;
+                top: 60px;          /* just below the nav bar */
+                left: 0;
+                right: 0;
+                background: #befd73; /* match nav background */
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .nav-toggle {
+                display: flex; /*show hamburger */
+            }
+
+        }
+
+        .nav-menu.show {
+            display: flex;   /* overrides display:none */
+            flex-direction: column;
+            position: absolute; /* overlays under the mav bar */
+            left: 0;
+            right: 0;
+            top: 60px; /* pushes below nav header */
+            width: 100%; /* full width of screen */
+            background: #befd73;
+            /* Adds space between the child items inside the flex container, <li>  */
+            gap: 1rem;
+            padding:  1rem;
+            z-index: 10; /* keeps menu above content */
+        }
+
+
+        .hero {
+            grid-area: hero;
+            background:#e0ffe0;
+            padding:1rem;
+        }
+
+        .mission {
+            grid-area: mission;
+            background:#ffe;
+            padding:1rem;
+        }
+
+        .programs {
+            grid-area: programs;
+            background:#eef;
+            padding:1rem;
+        }
+
+        .donate {
+            grid-area: donate;
+            background:#ccc;
+            padding:1rem;
+        }
+
+        .volunteer{
+            grid-area: volunteer;
+        }
+
+        .partners{
+            grid-area: partners;
+        }
+
+        .footer{
+            grid-area: footer;
+        }
+
+    </style>
 </head>
-<body>
-  <nav class="main-nav">
-    <div class="nav-brand">Vive Wellness</div>
-    <ul class="nav-menu">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="resources.html">Resources</a></li>
-    </ul>
-  </nav>
 
-  <div class="home-container">
-    <section class="hero">
-      <h1>Welcome to Vive Wellness</h1>
-      <p>Supporting community health through programs, partnerships, and resources.</p>
-    </section>
-    <section class="about">
-      <h2>About Us</h2>
-      <p>We are a nonprofit dedicated to improving wellness in our community.</p>
-    </section>
-    <section class="programs">
-      <h2>Programs</h2>
-      <p>Explore nutrition, fitness, and mental health programs available for all ages.</p>
-    </section>
-    <footer class="footer">
-      <p>&copy; 2025 Vive Wellness</p>
-    </footer>
-  </div>
+<body>
+    <div class="homepage-grid">
+        <header class = "header"> LOGO</header>
+        <nav class="nav">
+            <div class="nav-logo">Vive Wellness</div>
+            <button class="nav-toggle" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <!-- <li><a href="#about">About</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#registration">Registratoin</a></li>
+                <li><a href="#partners">Partners</a></li>
+                <li><a href="#volunteer">Volunteer</a></li>
+                <li><a href="#Donate">Donate</a></li>
+                <li><a href="#gallary">Gallary</a></li>
+                <li><a href="#contact">Contact</a></li> -->
+            </ul>
+        </nav>
+
+        <section class="hero">
+            <h1>Welcome to Vive Wellness</h1>
+        </section>
+        <section class="mission">
+            <h2>Mission</h2>
+            <p>Foster social justice, health and gender equity through culturally relevant physical, mental and social wellness programs.</p>
+        </section>
+        <section class="programs">
+            <h2>Programs</h2>
+            <p>Explore nutrition, fitness, and mental health programs available for all ages.</p>
+        </section>
+        <section class="donate">Donate</section>
+        <section class="volunteer">Volunteer</section>
+        <section class="partners">Partners</section>
+        <section class="footer">
+            <p>&copy; 2025 Vive Wellness</p>
+        </section>
+    </div>
+
+
+    <script>
+
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        navToggle.addEventListener('click', () => {
+            // when click on hamburger toggle .show class
+            navMenu.classList.toggle('show');
+
+            // aria-expanded="true/false" tells screen readers whether the menu is open.
+            // Update aria-expanded
+            const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+            navToggle.setAttribute('aria-expanded', !expanded);
+
+            //visual feedbakc to hamburger
+            navToggle.classList.toggle('active');            
+        });
+
+        //mkase sure keyboar dusers can also open/close the menu
+        //e is the event object
+        navToggle.addEventListener('keydown', (e) =>{
+            if(e.key === 'Enter' || e.key ===' '){
+                e.preventDefault(); //stop page from scrolling on space
+                nav.Toggle.click(); //reudse click handler
+            }
+        });
+
+        //close menu when clicking outisde
+
+        document.addEventListener('click', (e) => {
+            //e.target is the thing you actually clicked on
+            //navMenu.contains(e.target) is true if you clicked inside teh menu
+            if(!navMenu.contains(e.target) && !navToggle.contains(e.target)){
+                navMenu.classList.remove('show');
+                //tells screen readers that the menu is closed 
+                navToggle.setAttribute('aria-expanded', false);
+
+                //removes the active cladd from hamburger, so the button looks normal again
+                navToggle.classList.remove('active');
+            }
+        });
+
+        if(!expanded){
+            //finds the first linkn inside the nav menu
+            const firstLink = navMenu.querySelector('a');
+            //.focus() moves keyboard cursos to onto that link
+            fristLink.focus();
+        }
+
+
+    </script>
 </body>
 </html>
