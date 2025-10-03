@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .light{
+            background-color: white;
+        }
+        .dark{
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="theme" type="button"> Click me</button>
+
+    
+    <script>
+    
+    //attactch click event to the button
+    //when button is clicked reun the toggleTheme() funciton
+    document.querySelector('#theme').addEventListener('click', toggleTheme);
+
+    function toggleTheme(){
+        // Get the user's current theme choice from locla storage
+        // if nothing is stored yet, default to a light theme
+        const currentTheme = localStorage.getItem('userTheme') || 'light';
+
+        // Decide what the new theme should be
+        // IF the currentTheme == light, switch to dark
+        // ELSE switch back to light
+        let newTheme;
+        if(currentTheme === 'light')
+            newTheme = 'dark';
+        else
+            newTheme = 'light';
+
+        // saving the new theme and sending it to a function that will apply it 
+        setTheme(newTheme);
+    }
+
+
+    // Save user's theme choice to local storage
+    function setTheme(theme) {
+        // DATA BEING STORED: a single string eihter 'light' or 'dark'
+        // WHY: so the site remebes the users prefence when they return or reload
+        // HOW USERS CONTROL IT: they can change it any time by clicking the button
+        localStorage.setItem('userTheme', theme);
+
+        // applies the current theme to the whole page
+        document.body.className = theme;
+    }
+
+    // Load saved theme on page load
+    window.addEventListener('load', function() {
+        const savedTheme = localStorage.getItem('userTheme') || 'light';
+        document.body.className = savedTheme;
+    });
+    </script>
+
+</body>
+</html>
