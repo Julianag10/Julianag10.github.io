@@ -5,7 +5,8 @@
 document.addEventListener("DOMContentLoaded", ()=>{
     const form = document.getElementById("volunteerForm");
     const messages = document.getElementById("formMessages");
-
+    
+    //Listens for when from is submitted
     // function(event) -> annoynous function, a function without a name
     // function -> runs when event happens
     // event -> is the event object, describing wha tjust happend ( int this case form submitted)
@@ -44,3 +45,58 @@ document.addEventListener("DOMContentLoaded", ()=>{
       
     });
 });
+
+
+//-----------------------HAMBURGER -----------------------
+
+const navToggle = document.querySelector('.nav-toggle');
+const navMenu = document.querySelector('.nav-menu');
+
+// Listens for when When hamburger is clicked
+navToggle.addEventListener('click', () => {
+    // when click on hamburger toggle .show class
+    navMenu.classList.toggle('show');
+    // visual feedbakc to hamburger
+    navToggle.classList.toggle('active');    
+
+    // aria-expanded="true/false" tells screen readers whether the menu is open.
+    // Update aria-expanded
+    const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+    navToggle.setAttribute('aria-expanded', !expanded);
+
+    
+
+    // If opening the menu, focus the first link
+    if(!expanded){
+        //finds the first linkn inside the nav menu
+        const firstLink = navMenu.querySelector('a');
+        //.focus() moves keyboard cursos to onto that link
+        firstLink.focus();
+    }
+    
+});
+
+// makes sure keyboar users can also open/close the menu
+// e is the event object
+navToggle.addEventListener('keydown', (e) =>{
+    if(e.key === 'Enter' || e.key ===' '){
+        e.preventDefault(); // stop page from scrolling on space
+        navToggle.click(); // reudse click handler
+    }
+});
+
+// close menu when clicking outisde
+document.addEventListener('click', (e) => {
+    // e.target is the thing you actually clicked on
+    // navMenu.contains(e.target) is true if you clicked inside teh menu
+    if(!navMenu.contains(e.target) && !navToggle.contains(e.target)){
+        navMenu.classList.remove('show');
+        //tells screen readers that the menu is closed 
+        navToggle.setAttribute('aria-expanded', false);
+
+        //removes the active cladd from hamburger, so the button looks normal again
+        navToggle.classList.remove('active');
+    }
+
+});
+
