@@ -14,8 +14,8 @@
 -----------------------------*/
 .nav{
   display: flex;
+  /* position: realtive; */
   justify-content: space-between;
-  padding: .75rem 1rem; /*defult for smaller screens top/bottom .75rem, left/right 1rem */
   background-color: #befd73;
   color: black;
 }
@@ -47,7 +47,7 @@
 
 /* hambugerbutton */
 .nav-toggle {
-  display:flex;
+  display: none; /* default toggle state : hidden */
   flex-direction : column;
   justify-content: center;
   align-items: center;
@@ -117,8 +117,11 @@
 /* ---------- Desktop (≥ 1025px) ---------- */
 @media (min-width: 1025px) {
 
-  .main-nav { padding: 1rem 2rem; }
-  .nav-menu { gap: 3rem; }
+  .nav { padding: 1rem 2rem; }
+  .nav-menu { 
+    display: flex;
+    gap: 3rem;
+  }
   .nav-toggle { display: none; } /* full menu visible */
 
 
@@ -149,6 +152,15 @@
 
 /* ---------- Tablet (768px – 1024px) ---------- */
 @media (max-width: 1024px) and (min-width: 769px) {
+
+  .nav { padding: 1rem 1.5rem; }
+  .nav-menu {
+    gap: 2rem;
+    display: flex;
+   }
+  .nav-toggle { display: none; } /* hide hamburger */
+
+
   .home-grid {
     display: grid;
     grid-template-areas:
@@ -172,22 +184,29 @@
     grid-template-columns: 1fr 1fr;
   }
 
-
-  .main-nav { padding: 1rem 1.5rem; }
-  .nav-menu { gap: 2rem; }
-  .nav-toggle { display: none; } /* hide hamburger */
 }
 
 /* ---------- Mobile (< 768px) ---------- */
 @media (max-width: 768px) {
   .nav-menu {
     display: none; /* hidden until toggled */
+    position: absolute;
+    top: 60px;          /* just below the nav bar */
+    left: 0;
+    right: 0;
+    background: #befd73; /* match nav background */
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  .nav-menu.show{
+    display: flex;
   }
   .nav-toggle {
     display: flex; /* hamburger visible */
   }
 
-  .main-nav { padding: .75rem 1rem; }
+  .nav { padding: .75rem 1rem; }
 
   .home-grid {
     display: grid;
