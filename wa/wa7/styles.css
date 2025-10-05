@@ -8,6 +8,19 @@
     padding: 1rem;
 }
 
+button {
+  padding: 10px 15px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #f9f9f9;
+}
+
+button:hover {
+  background-color: #e0e0e0; /* subtle gray change */
+}
+
 /* ---------------------------
   NAVIGATION
 -----------------------------*/
@@ -284,15 +297,56 @@ button:hover {
     margin-top: 1rem;
 }
 
+/* ---------------------------
+  PROGRAMS GALLERY
+-----------------------------*/
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.gallery figure {
+  background: #f9f9f9;
+  padding: 0.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.gallery img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.gallery figcaption {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* Keyboard focus for accessibility */
+.gallery figure:focus {
+  outline: 3px solid #004d99;
+}
+  
+
 /* ========================================= 
    GALLERY (WITH CONTAINER QUERIES) 
-   ========================================= */
+   ========================================= 
+
 .gallery {
-    container-type: inline-size; 
-    container-name: gallery; 
-    display: grid;
-    gap: 1rem;
-    margin-top: 1rem;
+  container-type: inline-size; 
+  container-name: gallery; 
+
+  display: grid;
+  gap: 1rem;
+  margin: 2rem auto;   
+  padding: 1rem;
+  max-width: 1200px;  
+  width: 100%;        
 }
 
 @container gallery (max-width: 500px) {
@@ -304,5 +358,6 @@ button:hover {
 }
 
 @container gallery (min-width: 901px) {
-    .gallery { grid-template-columns: repeat(4, 1fr); }
+    .gallery { grid-template-columns: repeat(4, 1fr); } 
 }
+*/
