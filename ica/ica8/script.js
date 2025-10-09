@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ---------------- SETTINGS PAGE ----------------
+//============= SETTINGS PAGE =======================================
   const clearBtn = document.getElementById("clearData");
   if (clearBtn) {
     clearBtn.addEventListener("click", () => {
