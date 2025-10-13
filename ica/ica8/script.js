@@ -73,4 +73,28 @@ document.addEventListener("DOMContentLoaded", () => {
       navToggle.setAttribute("aria-expanded", !expanded);
     });
   }
+
+
+
+
+
+
+// ================= PROGRAMS ================\
+
+
+  document.querySelectorAll(".gallery figure").forEach(figure => {
+      figure.addEventListener("click", () => {
+        figure.classList.toggle("open");
+      });
+    });
+
+
+
+
+
+  
 });
+
+
+
+
