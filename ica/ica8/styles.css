@@ -32,6 +32,8 @@ button:hover {
     background-color: #befd73;
     color: black;
     position: relative;/* ensures dropdown menu is anchored to the nav bar */ 
+
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .nav-menu {
@@ -141,6 +143,10 @@ display: none; /* default toggle state : hidden */
       "footer footer footer";
     grid-template-columns: 1fr 1fr 1fr;
     
+}
+
+.donate{
+  margin-right: 25px;
 }
 
 .programs-grid {
@@ -328,10 +334,27 @@ button:hover {
 }
 
 /* Keyboard focus for accessibility */
-.gallery figure:focus {
-  outline: 3px solid #004d99;
+
+
+
+.activities {
+  list-style: disc;
+  margin: 0.75rem 0 0;
+  padding-left: 1.25rem;
+  text-align: left;
+  display: none; 
+}
+figure.open .activities {
+  display: block;
 }
   
+
+figure:hover{
+  cursor: pointer;
+  border: 2px solid blue;   /* thickness + style + color */
+  border-radius: 8px;       /* corner roundness */
+
+}
 
 /* ========================================= 
    GALLERY (WITH CONTAINER QUERIES) 
@@ -361,3 +384,60 @@ button:hover {
     .gallery { grid-template-columns: repeat(4, 1fr); } 
 }
 */
+
+
+
+/* ================== CONTAINER QURIES FOR HOME PAGE =====================*/ 
+
+.impact {
+  gap: 2rem;
+  display: flex;
+  width: 100%;
+}
+
+/* Each fact-impact is its own container */
+.fact-impact {
+  width: 25%;
+  border: 2.55px solid #020202;
+  background-color: #befd73;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  container-type: inline-size; /* enables container queries */
+}
+
+/* Responsive layout inside each container */
+@container (min-width: 600px) {
+  .fact-impact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .fact-impact h2,
+  .fact-impact h3 {
+    grid-column: 1 / -1; /* headers span full width */
+
+  }
+}
+
+
+h1, h2, h3{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+
+figcaption{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+} 
+
+
+
+
+
+
+
+
+
+
+
