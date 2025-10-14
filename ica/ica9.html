@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        p{
+            font-family: Arial, Helvetica, sans-serif; 
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+/* ==============  PERSUASIVE BUTTONS ======================================== */
+
+        .button-container {
+            display: inline-flex;  /* keeps containers inline with text */
+            justify-content: center;    /* center horizontally */
+            align-items: center;        /* center vertically */
+            padding: 20px;          /* space around button + shadow */
+        }
+
+        .blue {background-color: #1ecbe1;}
+        .orange{background-color: #E1341E;}
+
+        .btn{
+            padding: 0.25em 0.5em;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+
+            /* needed for top/left to work */
+            position: relative; 
+            transition: top 0.2s ease, left 0.2s ease, box-shadow 0.2s;
+        }
+    
+        .click-1{
+            background-color: #E1341E;
+            color: white;
+            border: 3px solid white; 
+            top: 0px; 
+            left: 0px;
+            
+            /* x shift, y shift, fuzyness, size exapnsion */
+            box-shadow: 
+                1px 1px 0px 0px white,
+                2px 2px 0px 0px white,
+                3px 3px 0px 0px white,
+                4px 4px 0px 0px white,
+                5px 5px 0px 0px white;
+        }
+
+        .click-1:hover{
+            box-shadow: 0px 0px 0px 0px; /* box-shadow: none; */
+
+            /* shifts the button into the shadow space */
+            top: 5px; /* moves button 5px down */
+            left: 5px; /* moves button 10px right */
+        }
+
+        .click-2{
+            background-color: #1ecbe1;
+            border: 3px solid black; 
+
+            top: 0px;
+            left: 0px;
+            box-shadow: none;
+        }
+
+        .click-2:hover{
+            top: -5px;
+            left: -5px;
+
+            box-shadow: 
+                1px 1px 0px 0px black,
+                2px 2px 0px 0px black,
+                3px 3px 0px 0px black,
+                4px 4px 0px 0px black,
+                5px 5px 0px 0px black;
+        }
+
+/* ==============  MOVING BOX ======================================== */
+        .box{
+            height: 200px;
+            width: 200px;
+            border: 5px black solid;
+            background-color: red;
+            animation-name: moving-box;
+            animation-duration: 4s;
+            animation-iteration-count: infinite;
+            position: relative;
+        } 
+
+        @keyframes moving-box{
+            from{
+                left: 0px;
+                top: 0px;
+                background-color: red;
+            }
+
+            25%{
+                left: 500px;
+                top: 0px;
+                background-color: orange;
+            }
+
+            50% {
+                left: 500px;
+                top: 500px;
+                background-color: yellow;
+            }
+
+            75%{
+                left:0px;
+                top:500px;
+                background-color: yellowgreen;
+            }
+
+            to {
+                left:0px;
+                top: 0px;
+                background-color: green;
+            }
+        } 
+
+        
+/* ==============  TRANSITION BOX ======================================== */
+        .another-box{
+            height: 200px;
+            width: 200px;
+            border: 5px black solid;
+            background-color: blue;
+            transition-property: width;
+        }
+        .another-box:hover{
+            width: 300px;
+        }
+
+
+    
+    </style>
+</head>
+<body>
+
+    <!-- Persuasive Button -->
+    <p>
+        Do you want to 
+        <span class="button-container blue">
+            <button class="btn click-1">click here</button>
+        </span>
+        or
+        <span class="button-container orange">
+            <button class="btn click-2">click here</button>
+        </span>
+    </p>
+
+
+    <!-- In class moving box -->
+    <div class="box">
+
+    </div>
+
+
+    <!-- In class trasition box -->
+    <div class="another-box">
+
+    </div>
+
+
+
+
+    <script>
+
+    </script>
+    
+</body>
+</html>
