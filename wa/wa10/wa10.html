@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="app">
-        <div id="lives" class="lives">
+        <div id="lives" class="lives hidden">
             <img src="img/pixelHeart.png" class="heart" alt="life 1">
             <img src="img/pixelHeart.png" class="heart" alt="life 2">
             <img src="img/pixelHeart.png" class="heart" alt="life 3">
@@ -22,18 +22,20 @@
             <h1>Welcome to Trump Quote Generator</h1>
         </div>
 
-        <button class="main-btn" id="js-start-btn">start</button>
+        <div class="btn-group">
+            <button class="main-btn" id="js-start-btn">start</button>
 
-        <button class="main-btn hidden" id="js-trump-btn" >trump</button>
-        <button class="main-btn hidden" id="js-dwight-btn" >dwight</button>
-
+            <button class="main-btn hidden" id="js-trump-btn" >trump</button>
+            <button class="main-btn hidden" id="js-dwight-btn" >dwight</button>
+        </div>
         
     </div>
 
-    <p> I extend this weekly assignment by making a seprate json file and adding a list of dwight schrute quotes that i thought sounded like trump could have said them. Then i parsed the json file and got all the quotes from it. then i used java script to randomely choose between the trump quotes that i got from an API and the dwight schrute quotes i put in the json file.</p>
-
-    <p>I could imagine using an API to gather data from linked in. Not sure how or if that is safe. But if critiquing LinkedIn, I could use a jobs or networking API to pull sample job postings, then analyze which ones show up for different profiles. </p>
-
+    <footer>
+        <p>I extend this weekly assignment by making a seprate json file and adding a list of dwight schrute quotes that i thought sounded like trump could have said them. Then i parsed the json file and got all the quotes from it. then i used java script to randomely choose between the trump quotes that i got from an API and the dwight schrute quotes i put in the json file.</p>
+        <p>I could imagine using an API to gather data from linked in. Not sure how or if that is safe. But if critiquing LinkedIn, I could use a jobs or networking API to pull sample job postings, then analyze which ones show up for different profiles. </p>
+    </footer>
+    
     <script src="wa10.js"> </script>
 </body>
 </html>
