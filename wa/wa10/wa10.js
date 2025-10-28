@@ -1,9 +1,10 @@
 // DOM ELEMENTS
+const appBox = document.querySelector(".app")
 const quoteElement = document.getElementById("js-quote-text");
 const startBtn = document.getElementById("js-start-btn");
 const trumpBtn = document.getElementById("js-trump-btn");
 const dwightBtn = document.getElementById("js-dwight-btn");
-const livesElement = document.getElementById("lives");
+const livesContainer = document.getElementById("lives");
 
 
 
@@ -19,6 +20,7 @@ const endpoint ="https://api.whatdoestrumpthink.com/api/v1/quotes/random";
 
 // States
 let lives = 3;
+const hearts = document.querySelectorAll(".heart");
 
 let currentQuote = {
     text: "",
@@ -26,7 +28,15 @@ let currentQuote = {
 };
 
 function displayLives() {
-  livesElement.innerText = "Lives: " + lives;
+    hearts.forEach((heart, index) => {
+        if(index < lives){
+            heart.src = "img/pixelHeart.png"; 
+            heart.alt = "life " + (index + 1);
+        } else {
+            heart.src = "img/EmptyPixelHeart.png";
+            heart.alt = "lost life " + (index + 1);
+        }
+    });
 }
 
 
@@ -64,7 +74,8 @@ async function getTrumpOrDwight() {
 
 function guess(choice) {
     if (choice === currentQuote.source) {
-        alert("Correct ");
+        // alert("Correct ");
+        getTrumpOrDwight();
     } else {
         lives--;
         displayLives();
@@ -74,13 +85,16 @@ function guess(choice) {
         if (lives <= 0) {
             alert("Gameover! Refresh to play again.");
             trumpBtn.classList.add("disabled");
-            kidBtn.classList.add("disabled");
+            dwightBtn.classList.add("disabled");
             return; 
             //show trump building a wall becauaes trump won
         }
+        // load next quote after a short delay so popup is visible
+        //setTimeout(getTrumpOrDwight, 1500);
+        getTrumpOrDwight();
     }
     // showFunnyPic(choice);
-    getTrumpOrDwight();
+    
 }
 
 // const images = [
@@ -106,10 +120,11 @@ startBtn.addEventListener('click', async () => {
     startBtn.classList.add("hidden");
     trumpBtn.classList.remove("hidden");
     dwightBtn.classList.remove("hidden");
+    livesContainer.classList.remove("hidden");
 
-    // Show lives
-    displayLives();
+    displayLives(); 
 
+    appBox.classList.add("active");
 });
 
 trumpBtn.addEventListener('click', () => guess("trump"));
