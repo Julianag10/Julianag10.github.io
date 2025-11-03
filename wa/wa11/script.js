@@ -1,9 +1,5 @@
 // fetch API, render articles, manage personalization logic
 
-
-
-// NewsChoice+ using Currents API
-// Get a free API key at https://currentsapi.services
 const API_KEY = "F6o9puLR32_YRDUy73B922Off3NkEwxFqxYP-Xoiw7I-n2H-";
 let allArticles = [];
 

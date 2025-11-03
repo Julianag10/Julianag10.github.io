@@ -1,4 +1,4 @@
-/* General page layout */
+/* Base layout */
 body {
   font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
   background-color: #f5f6fa;
@@ -8,7 +8,7 @@ body {
   line-height: 1.6;
 }
 
-/* Header section */
+/* Header */
 header {
   background-color: #0a2540;
   color: white;
@@ -32,25 +32,26 @@ select {
   font-size: 1rem;
   border-radius: 6px;
   border: 1px solid #ccc;
+  outline: none;
 }
 
-/* News feed layout */
+/* News feed grid */
 .news-feed {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.2rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* Individual news cards */
+/* News article cards */
 .article {
-  background-color: #fff;
+  background-color: #ffffff;
   border-radius: 12px;
   padding: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -58,14 +59,14 @@ select {
 
 .article:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
-/* Image styling */
+/* Images */
 .article-image {
   width: 100%;
   border-radius: 10px;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.9rem;
   aspect-ratio: 16 / 9;
   object-fit: cover;
 }
@@ -77,13 +78,13 @@ select {
   text-align: center;
   padding: 2rem 0;
   border-radius: 10px;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.9rem;
 }
 
-/* Text content */
+/* Text */
 .article h3 {
   font-size: 1.1rem;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
 }
 
 .article p {
@@ -95,7 +96,7 @@ select {
   color: #555;
 }
 
-/* Links */
+/* Link styling */
 a {
   color: #0066cc;
   font-weight: 600;
@@ -125,3 +126,5 @@ a:hover {
   margin-top: 2rem;
   font-weight: 500;
 }
+
+
