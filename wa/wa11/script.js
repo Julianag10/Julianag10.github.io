@@ -35,7 +35,7 @@ async function fetchNews(){
         const res = await fetch(endpoint);
 
         if(!res.ok){
-            throw Error(res.status);
+            throw Error(`API returned status ${res.status}`);
         }
 
         const data = await res.json();
@@ -44,8 +44,8 @@ async function fetchNews(){
         applyFilter();
 
     } catch(err){
-        console.log("there was an error :( ", err)
-        alert(err);
+        console.log("There was an error fetching news:", err);
+        // alert(err);
     }
 }
 
