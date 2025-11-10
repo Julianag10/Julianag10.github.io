@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header> 
+        <h1>NewsChoice+</h1>
+        <label for="topic-filter">Filter by topic:</label>
+        <select id="topic-filter">
+            <option value="all">All Topics</option>
+            <option value="technology">Technology</option>
+            <option value="sports">Sports</option>
+            <option value="business">Business</option>
+            <option value="science">Science</option>
+            <option value="politics">Politics</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="health">Health</option>
+        </select>
+        <h2>Top Headlines</h2>
+    </header>
+
+    <div class="news-feed" id="js-news-feed">
+        <p class="loading-text">Loading news...</p>
+    </div>
+
+    <!-- NOTE: All <img> elements are dynamically created in script.js, 
+         so alt text is added there. -->
+<script src="script.js"></script>
+</body>
+</html>
