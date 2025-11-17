@@ -1,0 +1,130 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+}
+
+header {
+    background: #0a2540;
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.tagline {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+select {
+    padding: 0.4rem;
+}
+
+.mode-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.mode-button {
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    border: 1px solid white;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+}
+
+.mode-button.active {
+    background: white;
+    color: #0a2540;
+}
+
+.critique-bar {
+    margin-top: 1rem;
+    padding: 0.5rem;
+}
+
+.bias-meter,
+.critique-banner {
+    font-size: 0.9rem;
+    margin: 0.25rem 0;
+}
+
+/* Bubble animation */
+.news-feed.bubble-effect {
+    opacity: 0.7;
+    transform: scale(0.99);
+    transition: all 0.4s ease;
+}
+
+.news-feed {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+    gap: 1.2rem;
+    padding: 2rem;
+}
+
+.article {
+    background: white;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.12);
+}
+
+.hidden-article {
+    background: #fff7e6;
+    border: 1px dashed orange;
+}
+
+.article-image {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 0.7rem;
+}
+
+.no-image {
+    background: #d9d9d9;
+    padding: 2rem;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.system-note {
+    background: #eef4ff;
+    padding: 0.5rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+}
+
+.reveal-btn {
+    padding: 0.6rem 1.2rem;
+    border: 1px solid #0a2540;
+    border-radius: 20px;
+    background: white;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+footer {
+    background: #0a2540;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .news-feed {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+}
