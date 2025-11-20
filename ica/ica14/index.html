@@ -1,117 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 
-    <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <main>
-      <section>
-        <div>
-          <h1>Jus' make things.<br />Put them on the internet.</h1>
-          <p>
-            Sign up for a newsletter all about building in public, sharing your
-            work, and ignoring the haters.
-          </p>
-          <form action="">
-            <input type="email" required placeholder="creator@hotmail.com" />
-            <button type="submit">sign up</button>
-          </form>
-        </div>
-      </section>
-      <div class="keypad">
-        <div class="keypad__base">
-          <img src="https://assets.codepen.io/605876/keypad-base.png?format=auto&quality=86" alt="" />
-        </div>
-        <button id="one" class="key keypad__single keypad__single--left">
-          <span class="key__mask">
-            <span class="key__content">
-              <span class="key__text">ok</span>
-              <img src="https://assets.codepen.io/605876/keypad-single.png?format=auto&quality=86" alt="" />
-            </span>
-          </span>
-        </button>
-        <button id="two" class="key keypad__single">
-          <span class="key__mask">
-            <span class="key__content">
-              <span class="key__text">go</span>
-              <img src="https://assets.codepen.io/605876/keypad-single.png?format=auto&quality=86" alt="" />
-            </span>
-          </span>
-        </button>
-        <button id="three" class="key keypad__double">
-          <span class="key__mask">
-            <span class="key__content">
-              <span class="key__text">create.</span>
-              <img src="https://assets.codepen.io/605876/keypad-double.png?format=auto&quality=86" alt="" />
-            </span>
-          </span>
-        </button>
-      </div>
-    </main>
-    <a
-      aria-label="Follow Jhey"
-      class="bear-link"
-      href="https://twitter.com/intent/follow?screen_name=jh3yy"
-      target="_blank"
-      rel="noreferrer noopener"
-    >
-      <svg
-        class="w-9"
-        viewBox="0 0 969 955"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <circle
-          cx="161.191"
-          cy="320.191"
-          r="133.191"
-          stroke="currentColor"
-          stroke-width="20"
-        ></circle>
-        <circle
-          cx="806.809"
-          cy="320.191"
-          r="133.191"
-          stroke="currentColor"
-          stroke-width="20"
-        ></circle>
-        <circle
-          cx="695.019"
-          cy="587.733"
-          r="31.4016"
-          fill="currentColor"
-        ></circle>
-        <circle
-          cx="272.981"
-          cy="587.733"
-          r="31.4016"
-          fill="currentColor"
-        ></circle>
-        <path
-          d="M564.388 712.083C564.388 743.994 526.035 779.911 483.372 779.911C440.709 779.911 402.356 743.994 402.356 712.083C402.356 680.173 440.709 664.353 483.372 664.353C526.035 664.353 564.388 680.173 564.388 712.083Z"
-          fill="currentColor"
-        ></path>
-        <rect
-          x="310.42"
-          y="448.31"
-          width="343.468"
-          height="51.4986"
-          fill="#FF1E1E"
-        ></rect>
-        <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
-          d="M745.643 288.24C815.368 344.185 854.539 432.623 854.539 511.741H614.938V454.652C614.938 433.113 597.477 415.652 575.938 415.652H388.37C366.831 415.652 349.37 433.113 349.37 454.652V511.741L110.949 511.741C110.949 432.623 150.12 344.185 219.845 288.24C289.57 232.295 384.138 200.865 482.744 200.865C581.35 200.865 675.918 232.295 745.643 288.24Z"
-          fill="currentColor"
-        ></path>
-      </svg>
-    </a>
+  <button class="creepy-btn">
+    <span class="creepy-btn__eyes">
+      <span class="creepy-btn__eye"><span class="creepy-btn__pupil"></span></span>
+      <span class="creepy-btn__eye"><span class="creepy-btn__pupil"></span></span>
+    </span>
+    <span class="creepy-btn__cover">Button</span>
+  </button>
 
+  <!-- Babel to compile JSX in the browser -->
+  <!-- <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> -->
 
-    <script type="module" src="script.js"></script>
+  <!-- Your script must now use type="text/babel" -->
+  <!-- <script type="text/babel" src="script.js"></script> -->
+
+  <script src="script.js"></script>
 </body>
 </html>
