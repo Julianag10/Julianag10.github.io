@@ -15,10 +15,7 @@ import adminDonationsRouter from "./routes/admin/donations.routes.js";
 import adminResourcesRouter from "./routes/admin/resources.routes.js";
 import adminWorkflowsRouter from "./routes/admin/workflows.routes.js";
 
-
-app.use(cors({
-  origin: "*", // allow all for now
-}));
+dotenv.config();
 
 // ---------- EXPRESS SETUP ----------------------------------------
 // create express app/server
@@ -27,8 +24,12 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // load environment variables
-dotenv.config({ path: path.join(__dirname, "../.env") });
 
+// dotenv.config({ path: path.join(__dirname, "../.env") });
+
+app.use(cors({
+  origin: "*", // allow all for now
+}));
 // ---------- STRIP WEEBHOOK API -------------------------------
 // must come before JSON
 // wehooks needs keep req.body as the raw body so that stripes signatiure check dosent fail 
