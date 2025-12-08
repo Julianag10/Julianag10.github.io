@@ -4,18 +4,17 @@ import { stripe } from "../utils/stripe.js";
 
 const router = Router();
 
-const BACKEND_URL = "https://non-profit-backend-s6s9.onrender.com";
 
 // ---------- STRIPE API ENPOINTS --------------------
 // SEND publishable key to frontend
-router.get(`${BACKEND_URL}/config`, (req, res) => {
+router.get("/config", (req, res) => {
   res.json({ 
     publishableKey: process.env.STRIPE_PUBLISHABLE_KEY
   });
 });
 
 // CREATE CHECKOUT SESSION
-router.post(`${BACKEND_URL}/create-checkout-session` , async (req, res) =>  {
+router.post("/create-checkout-session" , async (req, res) =>  {
   try {
     console.log("➡️ /create-checkout-session hit");
     console.log("📥 Body received:", req.body);
@@ -63,7 +62,7 @@ router.post(`${BACKEND_URL}/create-checkout-session` , async (req, res) =>  {
 // CONFIRMS PAYMENT STATUS, SESSION STATUS 
 // since my broweser can talk to stripes secret API directly , server must do it and report bakc a safe summary
 // the browser needs to knwo if the donation succeeeded, right now only stripe knows. and only server wuth the secret key can securley cas stripe for the real ressult
-router.get(`${BACKEND_URL}/session-status`, async (req, res) => {
+router.get("/session-status", async (req, res) => {
   // stripe.checkout.sessions.retrieve(...) server calls stripes APU using secret key(already configured in stripe client) to fetch the checkout session object for that session id
   const session = await stripe.checkout.sessions.retrieve(
     // req.query.session_id reads the session_id query param from the URL 
