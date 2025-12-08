@@ -117,7 +117,7 @@ router.post(
                     paymentIntent.last_payment_error?.message || "No Stripe last payment error message was found so, Your payment could not be completed.";
 
                 const retryUrl =
-                    (process.env.BASE_URL || "http://localhost:3000") + "/donate";
+                    (process.env.BASE_URL) + "/donate";
 
                 console.log("❌ Payment failed for:", email);
 
@@ -177,7 +177,7 @@ router.post(
                 console.log("🚫 Checkout expired:", session.id);
 
                 const resumeUrl =
-                (process.env.BASE_URL || "http://localhost:3000") + "/donate";
+                (process.env.BASE_URL ) + "/donate";
 
                 if (email) {
                 await sendAbandonedCheckoutEmail({ email, resumeUrl });

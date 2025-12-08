@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import cors from "cors";
 import path from "path"; // builds safe file paths 
 import { fileURLToPath } from "url"; // used to recreate __dirname
 import { engine } from "express-handlebars";
@@ -14,7 +15,10 @@ import adminDonationsRouter from "./routes/admin/donations.routes.js";
 import adminResourcesRouter from "./routes/admin/resources.routes.js";
 import adminWorkflowsRouter from "./routes/admin/workflows.routes.js";
 
-// dotenv.config();
+
+app.use(cors({
+  origin: "*", // allow all for now
+}));
 
 // ---------- EXPRESS SETUP ----------------------------------------
 // create express app/server
@@ -96,7 +100,9 @@ app.get("/complete", (req, res) => {
 });
 
 // ---------- START SERVER --------------------
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
+const BASE_URL = process.env.BASE_URL;
+
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
+  console.log(`🚀 Server running on ${BASE_URL}`);
 });
