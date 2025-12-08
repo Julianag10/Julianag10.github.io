@@ -1,0 +1,227 @@
+/* 🔴 Outline every element */
+* {
+  outline: 1px dashed red !important;
+  position: relative; 
+}
+
+
+.home-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* 3 equal columns */
+  grid-template-rows: auto;
+  grid-template-areas: 
+    "hero hero hero"
+    "about about about"
+    "programs programs programs"
+    "features features features"
+    "impact impact impact"
+    "donate donate donate"
+    "volunteer volunteer volunteer"
+    "testimonials testimonials testimonials"
+    "partners partners partners";
+    gap: 4rem 0rem; /*adds space between each section inside grid container*/
+}
+
+
+.hero{
+    grid-area: hero;
+    position: relative;  /* makes this the "anchor" for .hero-text */
+    width: 100%;
+    height: 70vh;     /* takes up 70% of the viewport height */
+}
+
+.hero img{
+    position: absolute;      /* makes the image fill the hero section */
+    width: 100%;
+    height: 100%;      /* fill the height of .hero */
+    object-fit: cover;         /* crop image while keeping aspect ratio */
+    display: block;
+}
+
+.hero-text{
+    position: absolute;        /* place text on top of image */
+    color:white;
+    text-align: left;
+    
+}
+
+.about{
+    grid-area: about;
+    display:grid;
+    grid-template-columns: 1fr 1fr; /* 2 equal columns */
+    gap: 2rem; /*makes spacbetween grid coloms */
+    padding: 0 2rem; /* keeps text from touching edges of bakcground */
+    background: var(--color-light);
+}
+
+.programs{
+    grid-area: programs;
+    padding: 0 2rem; 
+}
+
+.programs h2{ text-align: center;}
+
+.programs-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.program-card {
+    display: grid;
+    grid-template-rows: auto 1fr 1fr auto auto; 
+    gap: 1rem;
+    padding: 3rem; /* adds spsce beteern the cards boarder and inner stuff */
+
+    background: var(--color-secondary);
+    color:white;
+    border-radius: 10px;
+    
+    /* enable container queries */
+    /* container-type: inline-size; */
+    /* container-name: program; */
+}
+
+.program-card h3{
+    margin:0;
+    text-align: center;
+}
+
+.program-card p, 
+.program-card .activities {
+    margin:0;
+    padding-left: 0;
+    list-style: none;  
+    padding-bottom: 1rem;
+}
+
+.program-card .activities li {
+  margin-bottom: 1rem;
+}
+
+/* Circular images */
+.program-card img { 
+    /* margin: 0;  */
+    display: block; /* images are inline by default */
+    max-width: 100% ;
+    aspect-ratio: 1 /1; /*keep it square */
+    object-fit: cover; /* ensures the image fills the circle */
+    border-radius: 50%;
+    justify-self: center; /* centers image while text stays aligned left */
+}
+
+.program-card button{
+    display:block;
+    margin: 0 auto 1rem;  /* auto left/right centers it */
+}
+
+.features {
+    grid-area: features;
+    display: grid;
+    background-color: #BADA54;
+}
+
+.features-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 equal columns */
+    gap: 2rem;
+    padding: 3rem 2rem;
+}
+
+.features-benefits{
+    justify-self: center;
+    align-self: center;
+    width: 80%;
+}
+.features img{
+    width: 60%;
+    justify-self: center; /* centers horizontally in the column */
+}
+/* .program-card .activities {
+  text-align: left; 
+  margin-top: 1rem;
+} */
+
+/* If a program card shrinks below 350px */
+/* when .program-card is inside a container named program change the layout/styling */
+/* @container program (max-width: 350px) { */
+    /* swithc to a two colom layout within each card */
+    /* .program {
+        grid-template-columns: auto minmax(25ch, 1fr);
+    } */
+
+    /* .program-card {
+    padding: 1rem;
+    }
+
+    .program-card img {
+    width: 100px;
+    height: 100px;
+    }
+
+    .program-card p {
+    font-size: 0.9rem;
+    }
+
+    .program-card button {
+    }
+} */
+
+/* @media(600px< width <= 800px)  */
+    /* :root{
+        --fontsizes;
+    } */
+
+
+/* @media(800px < width) */
+
+.impact{
+    grid-area: impact;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: #0685EE;
+    margin:1rem;
+    padding: 4rem;
+    gap: 4rem;
+    /* border-radius: 10px; */
+}
+
+.fact-impact{
+    display: grid;
+    background-color: #0685EE;
+    color: white;
+    border-radius: 10px;
+    border: 5px solid #BADA54;
+    padding: 1rem;
+}
+
+.donate{
+    grid-area: donate;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    background-color: #BADA54;
+    padding: 4rem;
+    text-align: center;
+}
+
+
+
+.volunteer{
+    grid-area: volunteer;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 4rem;
+}
+
+.testimonials{
+    grid-area: testimonials;
+
+}
+
+.partners{
+    grid-area: partners;
+}
+
+
+

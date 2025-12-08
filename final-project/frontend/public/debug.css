@@ -1,0 +1,58 @@
+/* ========== GLOBAL DEBUG TOGGLE ==========
+   Add <link rel="stylesheet" href="debug.css"> to turn ON
+   Remove/comment it out to turn OFF
+=========================================== */
+
+/* Default outline for every element */
+* {
+  outline: 1px dashed red;   /* red outline = element boundary */
+  outline-offset: -1px;      /* keeps outline tight to the edge */
+}
+
+/* Color-code major sections */
+.hero      { background: rgba(255, 0, 0, 0.1); }    /* light red */
+.about     { background: rgba(0, 255, 0, 0.1); }    /* light green */
+.programs  { background: rgba(0, 0, 255, 0.1); }    /* light blue */
+.features  { background: rgba(255, 255, 0, 0.1); }  /* light yellow */
+.impact    { background: rgba(255, 165, 0, 0.1); }  /* light orange */
+.donate    { background: rgba(128, 0, 128, 0.1); }  /* light purple */
+.volunteer { background: rgba(0, 255, 255, 0.1); }  /* light cyan */
+.testimonials { background: rgba(255, 0, 255, 0.1);}/* light pink */
+.partners  { background: rgba(128, 128, 128, 0.1);} /* light gray */
+
+/* ======== VISUALIZE SPACING ======== */
+
+/* Show margins (orange) */
+* {
+  background-clip: content-box;  /* don't overwrite padding/bg */
+}
+*::before {
+  content: "";
+  display: block;
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+}
+
+/* Margin highlight */
+*[style], *:not(html):not(body) {
+  background-clip: content-box;
+  box-shadow: 0 0 0 0 orange; /* placeholder for margins */
+}
+
+/* Padding highlight */
+* {
+  background-clip: content-box;
+  background-origin: content-box;
+}
+
+/* Grid gaps highlight (blue) */
+[class*="grid"] {
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(0,0,255,0.05) 0px,
+    rgba(0,0,255,0.05) 1px,
+    transparent 1px,
+    transparent 100%
+  );
+}

@@ -1,0 +1,82 @@
+/* 🔴 Outline every element */
+/* * {
+  outline: 1px dashed red !important;
+  position: relative; 
+} */
+
+:root {
+  --color-primary:#BADA54;
+  --color-secondary: #0685EE;
+  --color-accent: #CBEEF3;
+  --color-text: #222222;
+  --color-background: #ffffff;
+
+    /* Font families */
+    --font-primary: 'ADLaM Display', cursive;
+    --font-secondary: 'Varela Round', sans-serif;
+
+  /* Font sizes (desktop-first, can scale with media queries) */
+  --font-size-h1: 8.8rem;   /* big hero headings */
+  --font-size-h2: 2.8rem;   /* section headings */
+  --font-size-h3: 1.8rem;    
+  --font-size-p: 1.125rem;      /* default paragraph */
+  --font-size-small: 0.875rem; /* fine print */
+  
+}
+
+h1 {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h1);
+  font-weight: 600;
+  line-height: 1em;
+  letter-spacing: -0.05em;
+}
+
+h2 {
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-h2);
+    font-weight: 400;
+    line-height: 1.2em;
+    letter-spacing: -0.03em;
+}
+
+h3 {
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-h3);
+    font-weight: 400;
+    line-height: 1.2em;
+    letter-spacing: -0.03em;
+}
+
+p, li{
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-p);
+    line-height: 1.2em;
+    letter-spacing: -0.03em;
+}
+
+html, body { 
+    margin:0 ;
+    height: 100%;       /* make page take full viewport */
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+
+/* HEADER */
+.header {
+  background: var(--color-primary);
+}
+
+.nav{
+    display: flex;
+}
+
+/* FOOTER */
+.footer {
+  background: var(--color-primary);
+}
+
