@@ -46,7 +46,7 @@ router.post("/create-checkout-session" , async (req, res) =>  {
       billing_address_collection: 'auto',
       line_items: [lineItem],
       mode: "payment",
-      // return_url: `${BASE_URL}/complete?session_id={CHECKOUT_SESSION_ID}`,
+      return_url: `https://non-profit-backend-s6s9.onrender.com/complete?session_id={CHECKOUT_SESSION_ID}`,
     });
     
     // sends res back to frontend 
