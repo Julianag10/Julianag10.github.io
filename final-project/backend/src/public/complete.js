@@ -64,7 +64,7 @@ async function initialize() {
     }
     // i ust changed this
 
-    const response = await fetch(`/session-status?session_id=${sessionId}`);
+    const response = await fetch(`/checkout/session-status?session_id=${sessionId}`);
     const session = await response.json();
 
     setSessionDetails(session);
