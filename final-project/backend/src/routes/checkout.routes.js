@@ -4,7 +4,6 @@ import { stripe } from "../utils/stripe.js";
 
 const router = Router();
 
-
 // ---------- STRIPE API ENPOINTS --------------------
 // SEND publishable key to frontend
 router.get("/config", (req, res) => {
@@ -46,7 +45,7 @@ router.post("/create-checkout-session" , async (req, res) =>  {
       billing_address_collection: 'auto',
       line_items: [lineItem],
       mode: "payment",
-      return_url: `${BASE_URL}/complete?session_id={CHECKOUT_SESSION_ID}`,
+      return_url: `http://localhost:3000/complete?session_id={CHECKOUT_SESSION_ID}`,
     });
     
     // sends res back to frontend 
