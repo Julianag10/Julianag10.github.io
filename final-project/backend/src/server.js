@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import path from "path"; // builds safe file paths 
 import { fileURLToPath } from "url"; // used to recreate __dirname
-// import { engine } from "express-handlebars";
+import { engine } from "express-handlebars";
 // import { db } from "./utils/db.js"; // optional
 
 // ROUTERS
@@ -55,15 +55,15 @@ app.use(
 // express.json() middleware automatically parses JSON request bodies into req.body.
 app.use(express.json()); // allows backend read JSON body from requesets
 app.use(express.urlencoded({ extended: true })); // allow HTML form bodies from requesrs
+// STATIC FILES (CSS, JS, IMAGES) in /public folder
+app.use(express.static(path.join(__dirname, "public")));
 
-// Because the frontend is now hosted separately, the backend should NOT render HTML anymore.
-// app.use(express.static(path.join(__dirname, "../../frontend/public"))); // serve static files in /public folder
 
-// // ---------- HANDELBARS VIEW ENGINE --------------------
-// app.engine("hbs", engine({ extname: ".hbs" }));
-// app.set("view engine", "hbs");
-// // path.join(__dirname, "views") == ./Vview folder
-// app.set("views", path.join(__dirname, "../../frontend/views"));
+// ---------- HANDELBARS VIEW ENGINE --------------------
+app.engine("hbs", engine({ extname: ".hbs" }));
+app.set("view engine", "hbs");
+// path.join(__dirname, "views") == ./Vview folder
+app.set("views", path.join(__dirname, "views"));
 
 // ---------- LOGGIN MIDDLEWARE ------------------------------
 // log every request
@@ -80,41 +80,41 @@ app.use("/admin/donations", adminDonationsRouter);
 app.use("/admin/resources", adminResourcesRouter);
 app.use("/admin/workflows", adminWorkflowsRouter);
 
-// // ---------- PAGE ROUTES ----------------------------------------
-// // HOME PAGE
-// app.get("/", (req, res) => {
-//   // "home" name of .hbs file that will turn into .html file 
-//   // then send that HTML back to the browser
-//   // express looks for views/donate.hbs and renders it inside main.hbs {{{body}}}
-//   res.render("pages/home", {
-//     title: "Home",
-//     stylesheet: "home.css",
-//     donation: true
-//   });
-// });
+// ---------- PAGE ROUTES ----------------------------------------
+// HOME PAGE
+app.get("/", (req, res) => {
+  // "home" name of .hbs file that will turn into .html file 
+  // then send that HTML back to the browser
+  // express looks for views/donate.hbs and renders it inside main.hbs {{{body}}}
+  res.render("pages/home", {
+    title: "Home",
+    stylesheet: "home.css",
+    donation: true
+  });
+});
 
-// // DONATE PAGE
-// app.get("/donate", (req, res) => {
-//   res.render("pages/donate", {
-//     title: "Donate",
-//     stylesheet: "donate.css",
-//     donation: true
-//   });
-// });
+// DONATE PAGE
+app.get("/donate", (req, res) => {
+  res.render("pages/donate", {
+    title: "Donate",
+    stylesheet: "donate.css",
+    donation: true
+  });
+});
 
-// // COMPLETE PAGE
-// app.get("/complete", (req, res) => {
-//   res.render("pages/complete", {
-//     title: "Payment Complete",
-//     stylesheet: "complete.css",
-//     script: "complete.js",
-//   });
-// });
+// COMPLETE PAGE
+app.get("/complete", (req, res) => {
+  res.render("pages/complete", {
+    title: "Payment Complete",
+    stylesheet: "complete.css",
+    script: "complete.js",
+  });
+});
 
-// // ---------- HEALTH CHECK ----------
-// app.get("/", (req, res) => {
-//   res.json({ status: "backend running", message: "API is alive" });
-// });
+// ---------- HEALTH CHECK ----------
+app.get("/", (req, res) => {
+  res.json({ status: "backend running", message: "API is alive" });
+});
 
 // ---------- START SERVER --------------------
 const PORT = process.env.PORT || 3000;
