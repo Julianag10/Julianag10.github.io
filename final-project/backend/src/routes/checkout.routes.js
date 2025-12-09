@@ -2,6 +2,7 @@
 import { Router } from "express";
 import { stripe } from "../utils/stripe.js";
 
+// const BASE_URL = process.env.BASE_URL;
 const router = Router();
 
 // ---------- STRIPE API ENPOINTS --------------------
@@ -45,7 +46,7 @@ router.post("/create-checkout-session" , async (req, res) =>  {
       billing_address_collection: 'auto',
       line_items: [lineItem],
       mode: "payment",
-      return_url: `${BASE_URL}/complete?session_id={CHECKOUT_SESSION_ID}`,
+      // return_url: `${BASE_URL}/complete?session_id={CHECKOUT_SESSION_ID}`,
     });
     
     // sends res back to frontend 
