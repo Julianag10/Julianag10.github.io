@@ -1,8 +1,9 @@
 import express from "express";
 import dotenv from "dotenv";
+import cors from "cors";
 import path from "path"; // builds safe file paths 
 import { fileURLToPath } from "url"; // used to recreate __dirname
-import { engine } from "express-handlebars";
+// import { engine } from "express-handlebars";
 // import { db } from "./utils/db.js"; // optional
 
 // ROUTERS
@@ -14,18 +15,31 @@ import adminDonationsRouter from "./routes/admin/donations.routes.js";
 import adminResourcesRouter from "./routes/admin/resources.routes.js";
 import adminWorkflowsRouter from "./routes/admin/workflows.routes.js";
 
-// dotenv.config();
+dotenv.config();
 
 // ---------- EXPRESS SETUP ----------------------------------------
-// create express app/server
 const app = express(); 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// load environment variables
-dotenv.config({ path: path.join(__dirname, "../.env") });
+// ---------- CORS CONFIG ----------------------------------------
+const allowedOrigins = [
+  "https://non-profit-frontend.onrender.com", // <-- your live frontend
+  "http://localhost:3000" // <-- dev environment
+];
 
-// ---------- STRIP WEEBHOOK API -------------------------------
+app.use(
+  cors({
+    origin: allowedOrigins,
+    credentials: true
+  })
+);
+
+// load environment variables
+// dotenv.config({ path: path.join(__dirname, "../.env") });
+
+
+// ---------- STRIPE WEEBHOOK API -------------------------------
 // must come before JSON
 // wehooks needs keep req.body as the raw body so that stripes signatiure check dosent fail 
 // mount webhook route(POST /webhook) as a path(webhookRouter)
@@ -41,13 +55,15 @@ app.use(
 // express.json() middleware automatically parses JSON request bodies into req.body.
 app.use(express.json()); // allows backend read JSON body from requesets
 app.use(express.urlencoded({ extended: true })); // allow HTML form bodies from requesrs
-app.use(express.static(path.join(__dirname, "../../frontend/public"))); // serve static files in /public folder
 
-// ---------- HANDELBARS VIEW ENGINE --------------------
-app.engine("hbs", engine({ extname: ".hbs" }));
-app.set("view engine", "hbs");
-// path.join(__dirname, "views") == ./Vview folder
-app.set("views", path.join(__dirname, "../../frontend/views"));
+// Because the frontend is now hosted separately, the backend should NOT render HTML anymore.
+// app.use(express.static(path.join(__dirname, "../../frontend/public"))); // serve static files in /public folder
+
+// // ---------- HANDELBARS VIEW ENGINE --------------------
+// app.engine("hbs", engine({ extname: ".hbs" }));
+// app.set("view engine", "hbs");
+// // path.join(__dirname, "views") == ./Vview folder
+// app.set("views", path.join(__dirname, "../../frontend/views"));
 
 // ---------- LOGGIN MIDDLEWARE ------------------------------
 // log every request
@@ -64,39 +80,47 @@ app.use("/admin/donations", adminDonationsRouter);
 app.use("/admin/resources", adminResourcesRouter);
 app.use("/admin/workflows", adminWorkflowsRouter);
 
-// ---------- PAGE ROUTES ----------------------------------------
-// HOME PAGE
-app.get("/", (req, res) => {
-  // "home" name of .hbs file that will turn into .html file 
-  // then send that HTML back to the browser
-  // express looks for views/donate.hbs and renders it inside main.hbs {{{body}}}
-  res.render("pages/home", {
-    title: "Home",
-    stylesheet: "home.css",
-    donation: true
-  });
-});
+// // ---------- PAGE ROUTES ----------------------------------------
+// // HOME PAGE
+// app.get("/", (req, res) => {
+//   // "home" name of .hbs file that will turn into .html file 
+//   // then send that HTML back to the browser
+//   // express looks for views/donate.hbs and renders it inside main.hbs {{{body}}}
+//   res.render("pages/home", {
+//     title: "Home",
+//     stylesheet: "home.css",
+//     donation: true
+//   });
+// });
 
-// DONATE PAGE
-app.get("/donate", (req, res) => {
-  res.render("pages/donate", {
-    title: "Donate",
-    stylesheet: "donate.css",
-    donation: true
-  });
-});
+// // DONATE PAGE
+// app.get("/donate", (req, res) => {
+//   res.render("pages/donate", {
+//     title: "Donate",
+//     stylesheet: "donate.css",
+//     donation: true
+//   });
+// });
 
-// COMPLETE PAGE
-app.get("/complete", (req, res) => {
-  res.render("pages/complete", {
-    title: "Payment Complete",
-    stylesheet: "complete.css",
-    script: "complete.js",
-  });
-});
+// // COMPLETE PAGE
+// app.get("/complete", (req, res) => {
+//   res.render("pages/complete", {
+//     title: "Payment Complete",
+//     stylesheet: "complete.css",
+//     script: "complete.js",
+//   });
+// });
+
+// // ---------- HEALTH CHECK ----------
+// app.get("/", (req, res) => {
+//   res.json({ status: "backend running", message: "API is alive" });
+// });
 
 // ---------- START SERVER --------------------
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
+const BASE_URL = process.env.BASE_URL;
+
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
+  // console.log(`🚀 BACK END Server running on PORT ${PORT}`);
+  console.log(`🚀 BACK END Server running on ${BASE_URL}`);
 });

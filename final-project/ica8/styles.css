@@ -1,0 +1,443 @@
+/* ---------------------------
+  GLOBAL BASE STYLES
+-----------------------------*/
+.grid {
+    display: grid;
+    /* display: grid-template-areas; */
+    gap: 1rem;
+    padding: 1rem;
+}
+
+button {
+  padding: 10px 15px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #f9f9f9;
+}
+
+button:hover {
+  background-color: #e0e0e0; /* subtle gray change */
+}
+
+/* ---------------------------
+  NAVIGATION
+-----------------------------*/
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;  /* desktop padding */
+    background-color: #befd73;
+    color: black;
+    position: relative;/* ensures dropdown menu is anchored to the nav bar */ 
+
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.nav-menu {
+    display: flex;  /* lays out list items in a row */
+    gap: 3rem;   /* space between links */
+    list-style: none; /* removes bullets */
+    margin: 0;  /* remove browser defaults */
+    padding: 0;
+}
+
+.nav-menu a {
+    color: black;
+    text-decoration: none; /* remove underlines */
+    padding: 0.5rem 0.75rem;  /*click/tap target size */
+}
+
+.nav-menu a:hover{
+    background-color: rgba(0, 0, 0, 0.1); /* feedback on hover only */
+    border-radius: 4px;
+}
+
+.nav-menu a:focus {
+    outline: 2px solid #333;   /* focus ring only for keyboard navigation */
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Hamburger button (hidden by default on desktop) */
+.nav-toggle{
+display: none; /* default toggle state : hidden */
+  flex-direction : column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 44px;
+  height: 44px;
+  background:none;
+  padding: 0; /*Removes default padding inside the <button> */
+  cursor: pointer;
+  border: none; /*Removes the browser’s default button border (usually a gray outline). */
+}
+
+.nav-toggle span{
+/*   <span> is an inline element (like text), so it has no height/width.
+    display: block; makes it act like a box so you can give it dimensions.*/
+    display: block;
+    height: 3px;
+
+    /* Makes each line stretch across the full width of the parent (.nav-toggle */
+    /* width: 100%; */
+    width: 30px;
+    background-color: black;
+    border-radius: 2px;
+}
+
+.nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(10px, 5px);
+}
+.nav-toggle.active span:nth-child(2) {
+    opacity: 0; /* hide middle line */
+}
+.nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(10px, -5px)
+}
+
+.nav-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* feedback on hover only */
+    border-radius: 4px;
+}
+
+.nav-toggle:focus-visible {
+    outline: 2px solid #333;   /* focus ring only for keyboard navigation */
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Dropdown when opened */
+.nav-menu.show {
+    display: flex;   /* overrides display:none */
+    flex-direction: column;
+    position: absolute; /* overlays under the mav bar */
+    left: 0;
+    right: 0;
+    top: 60px; /* pushes below nav header */
+    width: 100%; /* full width of screen */
+    background: #befd73;
+    /* Adds space between the child items inside the flex container, <li>  */
+    gap: 1rem;
+    padding:  1rem;
+    z-index: 10; /* keeps menu above content */
+}
+
+/* ---------------------------
+  PAGE LAYOUT GRIDS
+-----------------------------*/
+
+  
+/* Desktop (≥ 1025px) */
+.home-grid {
+    grid-template-areas: 
+      "header header header"
+      "nav nav nav"
+      "hero hero hero"
+      "impact impact impact"
+      "donate donate volunteer"
+      "partners partners partners"
+      "footer footer footer";
+    grid-template-columns: 1fr 1fr 1fr;
+    
+}
+
+.donate{
+  margin-right: 25px;
+}
+
+.programs-grid {
+    display: grid;
+    grid-template-areas:
+      "header header header"
+      "nav nav nav"
+      "programs programs programs"
+      "footer footer footer";
+    grid-template-columns:1fr 1fr 1fr;
+}
+
+
+/* ---------------------------
+  RESPONSIVE  PATTERNS
+-----------------------------*/
+/* ---------- Desktop (≥ 1025px) ---------- */
+@media (min-width: 1025px) {
+
+    .nav-menu { gap: 3rem;}
+    .nav-toggle { display: none; } /* full menu visible */
+  
+  
+    .home-grid {
+      display: grid;
+      grid-template-areas: 
+        "header header header"
+        "nav nav nav"
+        "hero hero hero"
+        "impact impact impact"
+        "donate donate volunteer"
+        "partners partners partners"
+        "footer footer footer";
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  
+    .programs-grid {
+      display: grid;
+      grid-template-areas:
+        "header header header"
+        "nav nav nav"
+        "programs programs programs"
+        "footer footer footer";
+      grid-template-columns:1fr 1fr 1fr;
+    }
+    
+  }  
+
+/* Tablet (769px – 1024px) */
+@media (max-width: 1024px) {
+    .nav { padding: 1rem 1.5rem; }
+    .nav-menu { gap: 2rem; }
+    .nav-toggle { display: none; }
+
+    .home-grid {
+        grid-template-areas:
+          "header header"
+          "nav nav"
+          "hero hero"
+          "impact impact"
+          "donate volunteer"
+          "partners partners"
+          "footer footer";
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .programs-grid {
+        grid-template-areas:
+          "header header"
+          "nav nav"
+          "programs programs"
+          "footer footer";
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+/* Mobile (< 768px) */
+@media (max-width: 768px) {
+    .nav { padding: .75rem 1rem; }
+    .nav-menu { display: none; }
+    .nav-toggle { display: flex; }
+  
+    .home-grid {
+      grid-template-areas:
+        "header"
+        "nav"
+        "hero"
+        "impact"
+        "donate"
+        "volunteer"
+        "partners"
+        "footer";
+      grid-template-columns: 1fr;
+    }
+  
+    .programs-grid {
+      grid-template-areas:
+        "header"
+        "nav"
+        "programs"
+        "footer";
+      grid-template-columns: 1fr;
+    }
+}
+
+  /* =========================================
+   GRID AREA ASSIGNMENTS
+========================================= */
+/* HOME PAGE */
+.header { grid-area: header; }
+.nav { grid-area: nav; }
+.hero { grid-area: hero; }
+.impact { grid-area: impact; }
+.donate { grid-area: donate; }
+.volunteer { grid-area: volunteer; }
+.partners { grid-area: partners; }
+.footer { grid-area: footer; }
+
+/* PROGRAMS PAGE */
+.programs { grid-area: programs; }
+
+
+/* =========================================
+   FORM
+========================================= */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    max-width: 400px;
+}
+
+    button {
+    background: #004d99;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #003366;
+}
+
+.error {
+    color: red;
+    font-size: 0.9rem;
+}
+.success {
+    color: green;
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+/* ---------------------------
+  PROGRAMS GALLERY
+-----------------------------*/
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.gallery figure {
+  background: #f9f9f9;
+  padding: 0.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.gallery img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.gallery figcaption {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* Keyboard focus for accessibility */
+
+
+
+.activities {
+  list-style: disc;
+  margin: 0.75rem 0 0;
+  padding-left: 1.25rem;
+  text-align: left;
+  display: none; 
+}
+figure.open .activities {
+  display: block;
+}
+  
+
+figure:hover{
+  cursor: pointer;
+  border: 2px solid blue;   /* thickness + style + color */
+  border-radius: 8px;       /* corner roundness */
+
+}
+
+/* ========================================= 
+   GALLERY (WITH CONTAINER QUERIES) 
+   ========================================= 
+
+.gallery {
+  container-type: inline-size; 
+  container-name: gallery; 
+
+  display: grid;
+  gap: 1rem;
+  margin: 2rem auto;   
+  padding: 1rem;
+  max-width: 1200px;  
+  width: 100%;        
+}
+
+@container gallery (max-width: 500px) {
+    .gallery { grid-template-columns: 1fr; }
+}
+  
+@container gallery (min-width: 501px) and (max-width: 900px) {
+    .gallery { grid-template-columns: repeat(2, 1fr); }
+}
+
+@container gallery (min-width: 901px) {
+    .gallery { grid-template-columns: repeat(4, 1fr); } 
+}
+*/
+
+
+
+/* ================== CONTAINER QURIES FOR HOME PAGE =====================*/ 
+
+.impact {
+  gap: 2rem;
+  display: flex;
+  width: 100%;
+}
+
+/* Each fact-impact is its own container */
+.fact-impact {
+  width: 25%;
+  border: 2.55px solid #020202;
+  background-color: #befd73;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  container-type: inline-size; /* enables container queries */
+}
+
+/* Responsive layout inside each container */
+@container (min-width: 600px) {
+  .fact-impact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .fact-impact h2,
+  .fact-impact h3 {
+    grid-column: 1 / -1; /* headers span full width */
+
+  }
+}
+
+
+h1, h2, h3{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+
+figcaption{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+} 
+
+
+
+
+
+
+
+
+
+
+
