@@ -1,3 +1,5 @@
+const BACKEND_URL = "https://non-profit-backend-s6s9.onrender.com";
+
 // Stripe.js client created with publishable key
 let stripe; 
 
@@ -67,7 +69,7 @@ async function validateEmail(email) {
 // ==============================================================================================
 document.addEventListener("DOMContentLoaded", async () => {
     // asks server for the publishable key( safe to expose)
-    const configRes = await fetch("/config"); 
+    const configRes = await fetch( `${BACKEND_URL}/checkout/config`); 
     const {publishableKey} = await configRes.json();
     
     // initalise stripe.js with publushable key
@@ -137,7 +139,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 // ==============================================================================================
 async function initializeCheckout(){
     // sending a json message to server, sending correct session payload
-    const res = await fetch("/create-checkout-session" , {
+    const res = await fetch(`${BACKEND_URL}/checkout/create-checkout-session` , {
         method: 'POST',
         headers: {'Content-Type' : 'application/json'},
         // taking a js object ({amount:2500}) adn turn it into a JSON string, because HTTPS requests only send text

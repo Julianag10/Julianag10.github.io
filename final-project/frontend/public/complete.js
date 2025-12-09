@@ -1,5 +1,7 @@
  // ------- UI Resources -------
  // SHOW USER WEATHER PAYMENT SUCCEEDED OR FAILED or INFO
+const BACKEND_URL = "https://non-profit-backend-s6s9.onrender.com";
+
 
 const SuccessIcon =
 `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -108,7 +110,7 @@ async function initialize(){
 
     // sends get req to sever endpoint /session-status, passing the session_id
     // so that server can use the session id to get return the session obejct
-    const response = await fetch(`/session-status?session_id=${sessionId}`);
+    const response = await fetch(`${BACKEND_URL}/checkout/session-status?session_id=${sessionId}`);
     
     // server will retrive the session object by calling stripe API with secrete key
     // server returns session object as a response
