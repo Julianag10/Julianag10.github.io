@@ -62,6 +62,7 @@ async function initialize() {
         setErrorState();
         return;
     }
+    // i ust changed this
 
     const response = await fetch(`/checkout/session-status?session_id=${sessionId}`);
     const session = await response.json();
