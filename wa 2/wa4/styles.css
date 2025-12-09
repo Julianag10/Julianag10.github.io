@@ -1,0 +1,179 @@
+
+/* COLOR PALLATE */
+:root {
+    --color-green: #7ACCAD;   /* accent / success */
+    --color-yellow: #FFE96D;  /* highlight */
+    --color-pink: #DC0073;    /* primary brand */
+    --color-blue: #008BF8;    /* secondary brand */
+    --color-orange: #FF5F33;  /* alert / accent */
+    --color-text: #333333;
+    --color-bg: #ffffff;
+  }
+
+/* ---------------------------------------------- */
+
+/* TYPOGRAPHY */
+/* adjust weights  */
+html {
+    
+    font-family: "league-gothic", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+p {
+    font-size: 16px;
+}
+
+.small-text {
+    font-size: 12px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+h1 {
+    font-size: 28px;
+}
+
+/* ---------------------------------------------- */
+
+/* LINKS */
+a:link {
+    color: #DC0073;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #008BF8;
+}
+
+a:hover {
+    color: #FF5F33;
+    /* text-decoration: underline; */
+}
+
+a:focus {
+    outline: 3px solid #008BF8;
+    outline-offset: 2px;
+}
+
+/* ---------------------------------------------- */
+
+
+/* BUTTONS */
+button {
+    background-color: #DC0073;  
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.1s ease;
+}
+
+button:hover {
+    background-color: #7ACCAD;
+    color: white;
+}
+
+button:visited {
+    color: #008BF8;
+}
+
+button:focus {
+    outline: 3px solid #008BF8;
+    outline-offset: 2px;
+}
+
+/* ---------------------------------------------- */
+
+/* LAYOUT */
+.flex {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+/* ---------------------------------------------- */
+
+/* HEADER */
+header {
+    background-color: var(--color-blue); /* pick from your palette */
+    padding: 1em;
+  }
+  
+  header h1 {
+    color: white; /* so the text is readable */
+  }
+  
+
+/* ---------------------------------------------- */
+
+
+/* NAVIGATION */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+  }
+  
+
+  nav a {
+    color: white;
+    font-weight: 600;
+    padding: 0.5em;
+  }
+  
+  nav a:hover {
+    background-color: var(--color-green);
+    border-radius: 4px;
+  }
+
+/* ---------------------------------------------- */
+
+/* FRAMES */
+.photo-frame {
+    display: inline-block;
+    padding: 10px;           /* space between image and frame edge */
+    margin: 10px;
+    border-radius: 8px;      /* optional rounded corners */
+  }
+  
+  /* Color variations using your palette */
+  .photo-frame.green  { background-color: var(--color-green); }
+  .photo-frame.yellow { background-color: var(--color-yellow); }
+  .photo-frame.pink   { background-color: var(--color-pink); }
+  .photo-frame.blue   { background-color: var(--color-blue); }
+  .photo-frame.orange { background-color: var(--color-orange); }
+
+/* ---------------------------------------------- */
+
+/* TYPOGRAPHY BACKGROUNDS */
+.hero {
+    background-color: var(--color-green);
+    color: white;
+    padding: 3em;
+    text-align: center;
+  }
+
+/* ---------------------------------------------- */
+
+/* section back grounds */
+section.about { background-color: var(--color-yellow); padding: 2em; }
+section.interests { background-color: var(--color-pink); padding: 2em; }
+section.contact { background-color: var(--color-blue); color: white; padding: 2em; }
+
+
+/* ---------------------------------------------- */
+
+
+  

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NewsChoice+ – a critical news prototype demonstrating systemic bias, filter bubbles, and alternative curation.">
+    <title>NewsChoice+</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>NewsChoice+</h1>
+        <p class="tagline">A critical exploration of how news algorithms shape what you see.</p>
+
+        <nav class="controls">
+            <label for="topic-filter">Filter by topic:</label>
+            <select id="topic-filter">
+                <option value="all">All Topics</option>
+                <option value="technology">Technology</option>
+                <option value="sports">Sports</option>
+                <option value="business">Business</option>
+                <option value="science">Science</option>
+                <option value="politics">Politics</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="health">Health</option>
+            </select>
+
+            <div class="mode-toggle">
+                <span>Mode:</span>
+                <button id="mode-algorithmic" class="mode-button active">Algorithmic Mode</button>
+                <button id="mode-balanced" class="mode-button">Balanced Mode</button>
+            </div>
+        </nav>
+
+        <div class="critique-bar">
+            <div id="bias-meter" class="bias-meter">Bias Meter: Neutral</div>
+            <div id="critique-banner" class="critique-banner">
+                This interface critiques how algorithmic curation narrows perspective.
+            </div>
+        </div>
+
+        <h2 class="section-title">Top Headlines</h2>
+    </header>
+
+    <main>
+        <div class="news-feed" id="js-news-feed">
+            <p class="loading-text">Loading news...</p>
+        </div>
+
+        <div id="hidden-controls" class="hidden-controls"></div>
+    </main>
+
+    <footer>
+        <p>© 2025 NewsChoice+. Prototype illustrating systemic media critique.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

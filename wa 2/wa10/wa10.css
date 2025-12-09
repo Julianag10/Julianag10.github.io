@@ -1,0 +1,115 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;             /* take up full screen height */
+    font-family:'Pixelify Sans', sans-serif;
+    font-size: 24px;
+    background: #1ecbe1;
+}
+
+.app {
+    position: relative; /* sets this box as the reference */
+    background: white;
+    padding: 20px 30px;
+    border: 5px solid black; 
+    width: 90%;           /* shrink width on phones */
+    max-width: 400px;     /* don’t get too wide on desktops */
+    min-height: 20vh;     /* welcome state */
+    text-align: center;
+    transition: min-height 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.lives {
+  position: absolute; /* Positions it relative to the closest ancestor that has position: relative */
+  top: 10px;
+  right: 10px;
+}
+
+.heart{
+    height: 30px;
+    width: 30px;
+}
+
+.app.active {
+  min-height: 50vh;     /* bigger after Start */
+}
+
+.quote-text{
+  display: flex;
+  flex: 1;
+  align-items: center;        /* vertical center */
+}
+.main-btn{
+    padding: 0.25em 0.5em;
+    font-size: 24px;
+    font-family: 'Pixelify Sans', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+
+    background-color: coral;
+    color:black;
+    border: 3px solid black; 
+
+    top: 0px; 
+    left: 0px;
+
+    /* x shift, y shift, fuzyness, size exapnsion */
+    box-shadow: 
+        1px 1px 0px 0px black,
+        2px 2px 0px 0px black,
+        3px 3px 0px 0px black,
+        4px 4px 0px 0px black,
+        5px 5px 0px 0px black;
+
+    /* needed for top/left to work */
+    position: relative; 
+    transition: top 0.2s ease, left 0.2s ease, box-shadow 0.2s;
+}
+
+.main-btn:hover{
+    background-color: #E1341E;   
+    color: white;               /* flip text color */
+    /* transform: scale(1.05);      */
+
+    top: -5px;
+    left: -5px;
+
+    box-shadow: 
+        2px 2px 0px 0px black,
+        4px 4px 0px 0px black,
+        6px 6px 0px 0px black,
+        8px 8px 0px 0px black,
+        10px 10px 0px 0px black; 
+}
+
+.main-btn:active{
+    box-shadow: 0px 0px 0px 0px; /* box-shadow: none; */
+    /* shifts the button into the shadow space */
+    top: 5px; /* moves button 5px down */
+    left: 5px; /* moves button 10px right */
+}
+
+.btn-group{
+  display: flex;
+  justify-content: center;
+  gap: 30px;  
+  margin: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+#js-trump-btn{
+  background-color: #1ecbe1;
+}

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+    <div class="home-grid">
+        <!-- SHARED Header and Nav -->
+        <header class = "header"> 
+
+            <img src = "./img/logo.png"  width="150" alt="Vive Wellness logo">
+
+        </header>
+
+
+
+
+
+        <nav class="nav">
+            <div class="nav-logo">Vive Wellness</div>
+            <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="settings.html">Settings</a></li>
+            </ul>
+        </nav>
+       
+
+        <section class="hero">
+            <h1>Social Justicce Mental Health Physical WEllness Health Equity</h1>
+        </section>
+
+
+
+        <!-- <section class="impact">
+            <h2>fact</h2>
+            <p>Over 60% of Latino & African American children do not know how to swim, increasing the drowning risk in our community.</p>
+
+            <h3>our impact</h3>
+            <p>5800 children & their families learned to swim. Every year ViVe teaches over 500 kids & their families how to swim through our After School & Learn to Swim programs.</p>
+
+            <h2>fact</h2>
+            <p>Minority children lack the access & opportunity of outdoor nature activities as well as physical wellness. These are essential to the mental health, cognitive development & the physical, social & emotional well-being of children.</p>
+
+            <h3>our impact</h3>
+            <p>4900 children enrolled in After School and outdoor recreation programs. Movement, social emotional and wellness & Youth Workforce development.</p>
+
+            <h2>fact</h2>
+            <p>30,000 newcomers arrived in Denver Colorado in 2023.  Most of them from Venezuela without permit to work while they waited for their Immigration appointment. </p>
+
+            <h3>our impact</h3>
+            <p>15,000 newcomers assisted.  VIVE has supported through resources such as Food bags, Telefones, Bus passes, Mental health resources, Children's school and has housed over 4500 people a total of 1000 leases</p>
+
+        </section> -->
+
+
+        <section class="impact">
+            <div class="fact-impact">
+                <h2>Fact</h2>
+                <p>Over 60% of Latino & African American children do not know how to swim, increasing the drowning risk in our community.</p>
+
+                <h3>Our Impact</h3>
+                <p>5800 children & their families learned to swim. Every year ViVe teaches over 500 kids & their families how to swim through our After School & Learn to Swim programs.</p>
+            </div>
+
+            <div class="fact-impact">
+                <h2>Fact</h2>
+                <p>Minority children lack the access & opportunity of outdoor nature activities as well as physical wellness. These are essential to the mental health, cognitive development & the physical, social & emotional well-being of children.</p>
+
+                <h3>Our Impact</h3>
+                <p>4900 children enrolled in After School and outdoor recreation programs. Movement, social emotional and wellness & Youth Workforce development.</p>
+            </div>
+
+            <div class="fact-impact">
+                <h2>Fact</h2>
+                <p>30,000 newcomers arrived in Denver Colorado in 2023. Most of them from Venezuela without permit to work while they waited for their Immigration appointment.</p>
+
+                <h3>Our Impact</h3>
+                <p>15,000 newcomers assisted. VIVE has supported through resources such as Food bags, Telefones, Bus passes, Mental health resources, Children's school and has housed over 4500 people a total of 1000 leases.</p>
+            </div>
+        </section>
+
+
+
+        <section class="donate">
+            <h2>Donate</h2>
+            <p>Your support matters. Please consider making a donation.</p>
+            <p> We provide children and their families opportunities to engage in physical activities, wellness education, sports and Youth Workforce that would otherwise be inaccessible to them. Any amount, big or small goes a long way in this organization. All contributions are tax deductible. VIVE 501 (c)(3) charitable organization.</p>
+        </section>
+
+
+        <section class="volunteer">
+            <h2>Volunteer with us</h2>
+
+            <h3>Sign up to volunteer in our community programs.</h3>
+
+            <form id="volunteerForm" novalidate>
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required aria-required="true" >
+
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required aria-required="true" >
+
+                <label for="program">Select Program:</label>
+                <select id="program" name="program" required aria-required="true">
+                <option value="">--Please choose an option--</option>
+                <option value="swim">Learn to Swim</option>
+                <option value="outdoor">Outdoor Recreation</option>
+                <option value="nutrition">Healthy Eating</option>
+                <option value="events">Community Events</option>
+                </select>
+
+                <button type="submit">Submit</button>
+            </form>
+
+            <!-- Error and confirmation messages -->
+            <div id="formMessages" aria-live="polite"></div>
+        </section>
+
+
+        <section class="partners">
+            <h2> Our Partners</h2>
+            <p>Through partnerships with local organizations and donations secured through grants and private funding, ViVe Wellness promotes physical and mental health, leadership, and social well-being to children and adults across Denver and surrounding cities.</p>
+            <p>We offer our services to organizations. ViVe is able to continue to offer the programs to communities of need through donations, grants and organizations partnering with ViVe for their projects.
+
+                Consider us for your future projects:
+                
+                • ViVe can create and organize your Community Events events such as community 5K walks/runs, obstacle courses, community bike rides, park use initiative, company wellness programs and more!
+                
+                • Zumba and Yoga demonstrations to promote event cohesive participation and bring communities together.
+                
+                • Physical activity classes to organizations, communities, schools, after school programs, businesses, etc.
+                
+                • Wellness education and mental health classes
+                
+                • Diabetes prevention classes</p>
+        </section>
+
+
+
+
+
+
+
+
+        <footer class="footer">
+            <p>&copy; 2025 Vive Wellness</p>
+        </footer>
+
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
